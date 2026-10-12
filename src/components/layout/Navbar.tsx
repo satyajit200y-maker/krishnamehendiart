@@ -33,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 bg-transparent backdrop-blur-md border-b border-[#C69B55]/20">
+    <header className="sticky top-0 z-40 bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between gap-8 bg-transparent">
         {/* Zone 1: Single text element wordmark (Top Bar Contract) */}
         <a

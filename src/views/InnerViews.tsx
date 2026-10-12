@@ -85,7 +85,7 @@ export const GalleryView: React.FC<GalleryViewProps> = ({
       <div
         role="tablist"
         aria-label="Portfolio category filter"
-        className="flex items-center gap-1.5 p-1.5 bg-[#EADCC8] rounded-xl overflow-x-auto border border-[#C69B55]/30"
+        className="flex items-center gap-1.5 p-1.5 bg-[#EADCC8] rounded-xl overflow-x-auto border border-[#C69B55]/30 no-scrollbar"
       >
         {categories.map((cat) => {
           const isSelected = activeFilter === cat;

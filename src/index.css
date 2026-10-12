@@ -41,6 +41,28 @@
   outline-offset: 2px;
 }
 
+/* Hide scrollbars while allowing touch swiping/scrolling */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide default mobile scrollbars across touch devices */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    background: transparent;
+  }
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+}
+
 /* Reduced motion compliance */
 @media (prefers-reduced-motion: reduce) {
   *,

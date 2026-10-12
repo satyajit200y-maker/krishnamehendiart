@@ -62,7 +62,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
   const [activeSlideIndex, setActiveSlideIndex] = React.useState(0);
   const [isHeroPaused, setIsHeroPaused] = React.useState(false);
   const [bannerDismissed, setBannerDismissed] = React.useState(false);
-  const [slideControlDismissed, setSlideControlDismissed] = React.useState(false);
 
   // Dynamic one-by-one background & showcase rotation
   React.useEffect(() => {
@@ -251,82 +250,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
                   <ArrowRight className="w-4 h-4 text-[#C69B55]" />
                 </motion.button>
               </motion.div>
-
-              {/* Dynamic Slide Control & Progress Indicator */}
-              {!slideControlDismissed && (
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.6, delay: 0.42 }}
-                  className="pt-4 flex flex-wrap items-center justify-between gap-4 border-t border-[#C69B55]/25"
-                >
-                  <div className="space-y-1">
-                    <div className="text-xs text-[#C69B55] font-medium">
-                      {currentSlide.category}
-                    </div>
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={currentSlide.id}
-                        initial={{ opacity: 0, y: 6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -6 }}
-                        transition={{ duration: 0.3 }}
-                        className="text-sm font-medium text-[#F8F2E8]"
-                      >
-                        {currentSlide.title}
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-
-                  <div className="flex items-center gap-2">
-                    <button
-                      type="button"
-                      aria-label="Previous background slide"
-                      onClick={handlePrevSlide}
-                      className="w-9 h-9 rounded-lg bg-[#23382D]/80 hover:bg-[#C69B55] text-[#F8F2E8] hover:text-[#201D1A] border border-[#C69B55]/40 flex items-center justify-center transition-colors cursor-pointer"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-
-                    <div className="flex items-center gap-1.5 px-2">
-                      {HERO_SLIDES.map((slide, idx) => {
-                        const isCurrent = idx === activeSlideIndex;
-                        return (
-                          <button
-                            key={slide.id}
-                            type="button"
-                            aria-label={`View slide ${idx + 1}: ${slide.title}`}
-                            onClick={() => setActiveSlideIndex(idx)}
-                            className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                              isCurrent ? 'w-7 bg-[#C69B55]' : 'w-2 bg-[#F8F2E8]/40 hover:bg-[#F8F2E8]/70'
-                            }`}
-                          />
-                        );
-                      })}
-                    </div>
-
-                    <button
-                      type="button"
-                      aria-label="Next background slide"
-                      onClick={handleNextSlide}
-                      className="w-9 h-9 rounded-lg bg-[#23382D]/80 hover:bg-[#C69B55] text-[#F8F2E8] hover:text-[#201D1A] border border-[#C69B55]/40 flex items-center justify-center transition-colors cursor-pointer"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-
-                    <button
-                      type="button"
-                      aria-label="Close slide controls"
-                      onClick={() => setSlideControlDismissed(true)}
-                      className="w-8 h-8 ml-1 rounded-lg text-[#EADCC8]/60 hover:text-[#F8F2E8] hover:bg-[#23382D]/80 flex items-center justify-center transition-colors cursor-pointer"
-                      title="Hide slide controls"
-                    >
-                      <X className="w-4 h-4" />
-                    </button>
-                  </div>
-                </motion.div>
-              )}
             </div>
 
             {/* Right Column: Synchronized Interactive Spotlight Frame */}
@@ -475,7 +398,7 @@ export const HomeView: React.FC<HomeViewProps> = ({
             transition={{ duration: 0.5, delay: 0.1, ease: EASE_OUT_EXPO }}
             role="tablist"
             aria-label="Filter mehndi designs by category"
-            className="mt-8 flex items-center gap-1.5 p-1.5 bg-[#EADCC8] rounded-xl overflow-x-auto max-w-full border border-[#C69B55]/30"
+            className="mt-8 flex items-center gap-1.5 p-1.5 bg-[#EADCC8] rounded-xl overflow-x-auto max-w-full border border-[#C69B55]/30 no-scrollbar"
           >
             {categories.map((cat) => {
               const active = selectedCategory === cat;
