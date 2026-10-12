@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+Allow: /gallery
+Allow: /services
+Allow: /about
+Allow: /contact
+Allow: /privacy
+Allow: /terms
+Allow: /cookies
+
+Disallow: /api/
+Disallow: /admin/
+Disallow: /preview/
+Disallow: /*?filter=*
+
+Sitemap: https://krishnamehndi.example.com/sitemap.xml
